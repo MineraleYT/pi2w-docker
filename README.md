@@ -24,7 +24,7 @@ A complete Docker stack for Raspberry Pi 2 W including web server, database, and
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/pi2w-docker.git
+git clone https://github.com/mineraleyt/pi2w-docker.git
 cd pi2w-docker
 ```
 
