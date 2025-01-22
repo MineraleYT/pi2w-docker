@@ -1,0 +1,70 @@
+---
+services:
+  # Web server
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-server
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    restart: unless-stopped
+    volumes:
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+
+  # Database
+  mariadb:
+    image: linuxserver/mariadb:latest
+    container_name: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./mariadb:/config
+    ports:
+      - "${MARIADB_PORT:-3306}:3306"
+    restart: unless-stopped
+
+  # Database management
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306
+    ports:
+      - "${PHPMYADMIN_PORT:-8080}:80"
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+
+  # Network-wide ad blocking
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    environment:
+      TZ: ${PIHOLE_TZ:-Europe/Rome}
+      WEBPASSWORD: ${PIHOLE_WEBPASSWORD}
+    volumes:
+      - './pihole/etc-pihole:/etc/pihole'
+      - './pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+    ports:
+      - "${PIHOLE_DNS_TCP_PORT:-53}:53/tcp"
+      - "${PIHOLE_DNS_UDP_PORT:-53}:53/udp"
+      - "${PIHOLE_HTTP_PORT:-8081}:80/tcp"
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+
+  # Automatic container updates
+  watchtower:
+    image: containrrr/watchtower
+    container_name: watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --schedule "0 0 4 * * *" --cleanup
+    restart: unless-stopped
+
+volumes:
+  mariadb:

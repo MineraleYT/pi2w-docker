@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi Docker Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .service-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #dee2e6;
+        }
+        .service-card h3 {
+            color: #0366d6;
+            margin-top: 0;
+        }
+        .service-card p {
+            margin: 10px 0;
+            color: #444;
+        }
+        .port-badge {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Raspberry Pi Docker Services</h1>
+        
+        <div class="service-grid">
+            <div class="service-card">
+                <h3>📊 Portainer</h3>
+                <p>Docker container management UI</p>
+                <p>URL: <a href="http://localhost:9000">http://localhost:9000</a></p>
+                <span class="port-badge">Port: 9000</span>
+            </div>
+
+            <div class="service-card">
+                <h3>🌐 NGINX</h3>
+                <p>Web Server</p>
+                <p>URL: <a href="http://localhost:80">http://localhost:80</a></p>
+                <span class="port-badge">Port: 80</span>
+            </div>
+
+            <div class="service-card">
+                <h3>💾 MariaDB</h3>
+                <p>Database Server</p>
+                <p>Host: localhost</p>
+                <span class="port-badge">Port: 3306</span>
+            </div>
+
+            <div class="service-card">
+                <h3>🔧 phpMyAdmin</h3>
+                <p>Database Management</p>
+                <p>URL: <a href="http://localhost:8080">http://localhost:8080</a></p>
+                <span class="port-badge">Port: 8080</span>
+            </div>
+
+            <div class="service-card">
+                <h3>🛡️ Pi-hole</h3>
+                <p>Network-wide Ad Blocking</p>
+                <p>URL: <a href="http://localhost:8081">http://localhost:8081</a></p>
+                <span class="port-badge">Port: 8081</span>
+                <span class="port-badge">DNS: 53</span>
+            </div>
+
+            <div class="service-card">
+                <h3>🔄 Watchtower</h3>
+                <p>Automatic Container Updates</p>
+                <p>Updates daily at 4 AM</p>
+                <p>Automatic cleanup enabled</p>
+            </div>
+        </div>
+
+        <script>
+            // Replace localhost with actual IP
+            document.addEventListener('DOMContentLoaded', function() {
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        document.querySelectorAll('a').forEach(link => {
+                            link.href = link.href.replace('localhost', window.location.hostname);
+                            link.textContent = link.textContent.replace('localhost', window.location.hostname);
+                        });
+                    })
+                    .catch(console.error);
+            });
+        </script>
+    </div>
+</body>
+</html>
