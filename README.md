@@ -2,6 +2,8 @@
 
 A complete Docker stack for Raspberry Pi 2 W including web server, database, and various management tools.
 
+🔍 [Live Preview](https://mineraleyt.github.io/pi2w-docker/) - See the stack in action before installing!
+
 ## Services
 
 - **NGINX**: Web server

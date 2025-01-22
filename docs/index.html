@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi2W Docker Stack - Preview</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #2c3e50;
+            --bg-color: #f5f6fa;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .service-card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+        .installation {
+            margin-top: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .code-block {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .features {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .feature {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .github-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .github-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Pi2W Docker Stack</h1>
+        <p>A complete Docker stack for Raspberry Pi 2 W</p>
+        <a href="https://github.com/mineraleyt/pi2w-docker" class="github-link">View on GitHub</a>
+    </div>
+
+    <div class="container">
+        <div class="services">
+            <div class="service-card">
+                <h3>🌐 NGINX</h3>
+                <p>Lightweight web server serving your content</p>
+                <p>Port: 80</p>
+            </div>
+            <div class="service-card">
+                <h3>💾 MariaDB</h3>
+                <p>Reliable database server</p>
+                <p>Port: 3306</p>
+            </div>
+            <div class="service-card">
+                <h3>🛠 phpMyAdmin</h3>
+                <p>Database management made easy</p>
+                <p>Port: 8080</p>
+            </div>
+            <div class="service-card">
+                <h3>🛡 Pi-hole</h3>
+                <p>Network-wide ad blocking</p>
+                <p>Ports: 8081 (admin), 53 (DNS)</p>
+            </div>
+            <div class="service-card">
+                <h3>📊 Portainer</h3>
+                <p>Docker container management UI</p>
+                <p>Port: 9000</p>
+            </div>
+            <div class="service-card">
+                <h3>🔄 Watchtower</h3>
+                <p>Automatic container updates</p>
+                <p>Updates daily at 4 AM</p>
+            </div>
+        </div>
+
+        <div class="installation">
+            <h2>Quick Installation</h2>
+            <div class="code-block">
+<pre>
+git clone https://github.com/yourusername/pi2w-docker.git
+cd pi2w-docker
+cp .env.example .env
+# Edit .env with your settings
+chmod +x install.sh
+./install.sh
+docker compose up -d
+</pre>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>🔒 Secure by Default</h3>
+                <p>Environment-based configuration with no hardcoded credentials</p>
+            </div>
+            <div class="feature">
+                <h3>📱 Mobile Friendly</h3>
+                <p>All web interfaces are responsive and mobile-ready</p>
+            </div>
+            <div class="feature">
+                <h3>🔧 Easy to Customize</h3>
+                <p>Well-documented configuration options in .env file</p>
+            </div>
+            <div class="feature">
+                <h3>🚀 Auto Updates</h3>
+                <p>Containers stay up-to-date with Watchtower</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
