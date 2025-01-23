@@ -5,7 +5,7 @@ services:
     image: nginx:alpine
     container_name: nginx-server
     ports:
-      - "${NGINX_PORT:-80}:80"
+      - "80:80"
     restart: unless-stopped
     volumes:
       - ./nginx/html:/usr/share/nginx/html
@@ -23,7 +23,7 @@ services:
     volumes:
       - ./mariadb:/config
     ports:
-      - "${MARIADB_PORT:-3306}:3306"
+      - "3306:3306"
     restart: unless-stopped
 
   # Database management
@@ -34,7 +34,7 @@ services:
       - PMA_HOST=mariadb
       - PMA_PORT=3306
     ports:
-      - "${PHPMYADMIN_PORT:-8080}:80"
+      - "8080:80"
     restart: unless-stopped
     depends_on:
       - mariadb
@@ -50,9 +50,9 @@ services:
       - './pihole/etc-pihole:/etc/pihole'
       - './pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
     ports:
-      - "${PIHOLE_DNS_TCP_PORT:-53}:53/tcp"
-      - "${PIHOLE_DNS_UDP_PORT:-53}:53/udp"
-      - "${PIHOLE_HTTP_PORT:-8081}:80/tcp"
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "8081:80/tcp"
     restart: unless-stopped
     cap_add:
       - NET_ADMIN
