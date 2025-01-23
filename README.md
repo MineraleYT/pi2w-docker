@@ -1,6 +1,6 @@
-# Raspberry Pi 2 W Docker Stack
+# Raspberry Pi Zero 2 W Docker Stack
 
-A complete Docker stack for Raspberry Pi 2 W including web server, database, and various management tools.
+A complete Docker stack for Raspberry Pi Zero 2 W including web server, database, and various management tools.
 
 🔍 [Live Preview](https://mineraleyt.github.io/pi2w-docker/) - See the stack in action before installing!
 
@@ -15,7 +15,7 @@ A complete Docker stack for Raspberry Pi 2 W including web server, database, and
 
 ## Prerequisites
 
-- Raspberry Pi 2 W with Raspberry Pi OS installed
+- Raspberry Pi Zero 2 W with Raspberry Pi OS installed
 - Git installed (`sudo apt-get install git`)
 - Internet connection
 - SSH access to your Raspberry Pi (recommended)
