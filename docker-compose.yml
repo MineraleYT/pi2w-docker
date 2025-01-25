@@ -13,7 +13,7 @@ services:
 
   # Database
   mariadb:
-    image: linuxserver/mariadb:latest
+    image: linuxserver/mariadb:alpine
     container_name: mariadb
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -29,6 +29,7 @@ services:
   # Database management
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    platform: linux/arm64
     container_name: phpmyadmin
     environment:
       - PMA_HOST=mariadb
