@@ -54,4 +54,5 @@ sudo docker run -d \
 
 echo "Installation complete!"
 echo "Please log out and log back in for docker group changes to take effect"
-echo "Access Portainer at http://[YOUR-PI-IP]:9000"
+IP=$(hostname -I | awk '{print $1}')
+echo "Access Portainer at http://$IP:9000"
